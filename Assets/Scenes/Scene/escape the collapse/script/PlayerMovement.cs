@@ -1,9 +1,15 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovementWithPauseUI : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
+    public float jumpForce = 5f;
+
+    [Header("Ground Detection Settings")]
+    public LayerMask groundLayer;          // Which layer counts as "ground"
+    public float groundCheckDistance = 1.1f; // Adjustable raycast distance
 
     [Header("Camera Settings")]
     public float mouseSensitivity = 2f;
@@ -15,6 +21,17 @@ public class PlayerMovementWithPauseUI : MonoBehaviour
     private float xRotation = 0f;
     private bool mouseControlEnabled = false;
     private bool isPaused = false;
+
+    private Rigidbody rb;
+    private bool isGrounded = true;
+    private float defaultSpeed;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true; // prevent unwanted rotation from physics
+        defaultSpeed = moveSpeed; // save original speed
+    }
 
     void Start()
     {
@@ -30,17 +47,22 @@ public class PlayerMovementWithPauseUI : MonoBehaviour
         if (!mouseControlEnabled)
             return;
 
-        // pause game
+        // Pause game
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
             TogglePause();
-        }
 
         if (isPaused)
             return;
 
-        MovePlayer();
         RotatePlayer();
+        CheckGround();
+        HandleJumpInput();
+    }
+
+    void FixedUpdate()
+    {
+        if (!isPaused && mouseControlEnabled)
+            MovePlayer();
     }
 
     void MovePlayer()
@@ -48,8 +70,10 @@ public class PlayerMovementWithPauseUI : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * horizontal + transform.forward * vertical;
-        transform.position += move * moveSpeed * Time.deltaTime;
+        Vector3 move = (transform.right * horizontal + transform.forward * vertical).normalized;
+        Vector3 targetPosition = rb.position + move * moveSpeed * Time.fixedDeltaTime;
+
+        rb.MovePosition(targetPosition);
     }
 
     void RotatePlayer()
@@ -61,8 +85,26 @@ public class PlayerMovementWithPauseUI : MonoBehaviour
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
         playerCamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
+    }
+
+    void HandleJumpInput()
+    {
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z); // reset vertical velocity
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
+        }
+    }
+
+    void CheckGround()
+    {
+        // Cast a ray down from the bottom of the player
+        Vector3 rayOrigin = transform.position;
+        isGrounded = Physics.Raycast(rayOrigin, Vector3.down, groundCheckDistance, groundLayer);
     }
 
     void TogglePause()
@@ -89,7 +131,6 @@ public class PlayerMovementWithPauseUI : MonoBehaviour
         Cursor.visible = !locked;
     }
 
-    // 🔹 Fungsi tambahan untuk dikontrol oleh PlayerSceneManager
     public void SetFPSControl(bool enabled)
     {
         mouseControlEnabled = enabled;
@@ -109,12 +150,6 @@ public class PlayerMovementWithPauseUI : MonoBehaviour
                 pauseMenuCanvas.SetActive(false);
         }
     }
-    private float defaultSpeed;
-
-    void Awake()
-    {
-        defaultSpeed = moveSpeed; // Simpan kecepatan awal
-    }
 
     public void SetMoveSpeed(float newSpeed)
     {
@@ -126,4 +161,10 @@ public class PlayerMovementWithPauseUI : MonoBehaviour
         moveSpeed = defaultSpeed;
     }
 
+    // Debugging helper: visualize ray in Scene view
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundCheckDistance);
+    }
 }

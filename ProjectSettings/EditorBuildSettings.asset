@@ -68,4 +68,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene/escape the collapse/deadscreen.unity
     guid: c417fff8b7fef3240a592a4d22090f19
+  - enabled: 1
+    path: Assets/Scenes/Scene/escape the collapse/win screen.unity
+    guid: 8015e2de44988a741a79dd132faa524f
   m_configObjects: {}
