@@ -1,6 +1,7 @@
+
 using UnityEngine;
 
-public class DoorSwitchTrigger : MonoBehaviour
+public class DoorSwitchTrigger : MonoBehaviour, IInteractable
 {
     [Header("Door Objects")]
     [Tooltip("GameObject pintu tertutup (aktif di awal)")]
@@ -9,36 +10,47 @@ public class DoorSwitchTrigger : MonoBehaviour
     [Tooltip("GameObject pintu terbuka (nonaktif di awal)")]
     public GameObject openDoor;
 
-    [Header("Trigger Settings")]
-    public float interactDistance = 3f; // jarak interaksi
-    private Transform player;
+    [Header("Interaction Settings")]
+    public string interactionPrompt = "Press E to open door";
+
     private bool isSwitched = false;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        if (closedDoor != null)
+            closedDoor.SetActive(true);
 
-        // Pastikan kondisi awal
-        if (closedDoor != null) closedDoor.SetActive(true);
-        if (openDoor != null) openDoor.SetActive(false);
+        if (openDoor != null)
+            openDoor.SetActive(false);
     }
 
-    private void Update()
+    public string GetPrompt()
     {
-        if (isSwitched || player == null) return;
+        if (isSwitched)
+            return "";
 
-        float distance = Vector3.Distance(transform.position, player.position);
-
-        if (distance <= interactDistance && Input.GetKeyDown(KeyCode.E))
+        if (KeyManager.Instance != null &&
+            KeyManager.Instance.PlayerHasKey)
         {
-            if (KeyManager.Instance != null && KeyManager.Instance.PlayerHasKey)
-            {
-                SwitchDoors();
-            }
-            else
-            {
-                Debug.Log("Door is locked. You need a key!");
-            }
+            return interactionPrompt;
+        }
+
+        return "Door is locked - need a key";
+    }
+
+    public void Interact()
+    {
+        if (isSwitched)
+            return;
+
+        if (KeyManager.Instance != null &&
+            KeyManager.Instance.PlayerHasKey)
+        {
+            SwitchDoors();
+        }
+        else
+        {
+            Debug.Log("Door is locked. You need a key!");
         }
     }
 

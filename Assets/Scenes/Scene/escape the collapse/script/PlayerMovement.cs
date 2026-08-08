@@ -65,16 +65,53 @@ public class PlayerMovementWithPauseUI : MonoBehaviour
             MovePlayer();
     }
 
-    void MovePlayer()
+ 
+void MovePlayer()
     {
+        // A/D movement
         float horizontal = Input.GetAxis("Horizontal");
+
+        // Normal keyboard vertical input
         float vertical = Input.GetAxis("Vertical");
 
-        Vector3 move = (transform.right * horizontal + transform.forward * vertical).normalized;
-        Vector3 targetPosition = rb.position + move * moveSpeed * Time.fixedDeltaTime;
+        // ---------------------------------------------------------
+        // FORWARD INPUT
+        // ---------------------------------------------------------
+        //
+        // Moving.IsForwardPressed() returns TRUE when:
+        //
+        // 1. Keyboard W is pressed
+        // 2. UI W button is pressed
+        // 3. Voice command activated continuous forward
+        //
+        // If any of those are active, force forward movement.
+        // ---------------------------------------------------------
+
+        if (Moving.IsForwardPressed())
+        {
+            vertical = 1f;
+        }
+
+        // ---------------------------------------------------------
+        // CREATE MOVEMENT
+        // ---------------------------------------------------------
+
+        Vector3 move =
+            (transform.right * horizontal +
+             transform.forward * vertical).normalized;
+
+        // ---------------------------------------------------------
+        // MOVE PLAYER
+        // ---------------------------------------------------------
+
+        Vector3 targetPosition =
+            rb.position +
+            move * moveSpeed * Time.fixedDeltaTime;
 
         rb.MovePosition(targetPosition);
     }
+
+
 
     void RotatePlayer()
     {
