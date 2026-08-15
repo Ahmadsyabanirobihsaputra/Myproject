@@ -159,6 +159,8 @@ MonoBehaviour:
   feedbackText: {fileID: 1014642843}
   showDebug: 1
   recognitionMode: 2
+  pushToTalkKey: 118
+  showPushToTalkStatus: 1
 --- !u!4 &87689254
 Transform:
   m_ObjectHideFlags: 0
@@ -2581,8 +2583,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleScenes:
-  - sceneName: gameplay
-    chanceWeight: 100
+  - sceneName: gameplay main 1
+    chanceWeight: 50
+  - sceneName: gameplay main 2
+    chanceWeight: 50
 --- !u!1001 &1448818191
 PrefabInstance:
   m_ObjectHideFlags: 0
