@@ -1364,7 +1364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd535e29045e7fa4196192e4e3597f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: menu
+  sceneToLoad: menu main
 --- !u!1 &1826434654
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,6 +1622,8 @@ MonoBehaviour:
   feedbackText: {fileID: 1169062911}
   showDebug: 1
   recognitionMode: 2
+  pushToTalkKey: 118
+  showPushToTalkStatus: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

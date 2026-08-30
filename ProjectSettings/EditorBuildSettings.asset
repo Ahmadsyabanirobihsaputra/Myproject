@@ -60,6 +60,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene/escape the collapse/pembuka4.unity
     guid: f36e901c9fa070746ad9fef0678f947b
   - enabled: 1
+    path: Assets/Scenes/Scene/escape the collapse/Main game/main menu/menu main.unity
+    guid: bd4ad83f09b05c84e83a8d105765d9a5
+  - enabled: 1
     path: Assets/Scenes/Scene/escape the collapse/menu.unity
     guid: bfaa9f17aee8d3b48b29361cb9512910
   - enabled: 1
