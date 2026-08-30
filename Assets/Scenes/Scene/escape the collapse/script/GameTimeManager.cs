@@ -23,6 +23,12 @@ public class GameTimeManager : MonoBehaviour
     [Tooltip("Scene name that completes the current run.")]
     public string winSceneName = "WinScreen";
 
+    [Tooltip("Scene name of the main menu / lobby. If the player returns " +
+             "here while a run is still in progress (e.g. they quit mid-level " +
+             "instead of dying or winning), the run is cancelled the same way " +
+             "a death would, so the time is not left running or counted.")]
+    public string mainMenuSceneName = "MainMenu";
+
 
     // =========================================================
     // TIMER DATA
@@ -107,7 +113,7 @@ public class GameTimeManager : MonoBehaviour
         if (!string.IsNullOrEmpty(deathSceneName) &&
             loadedSceneName == deathSceneName)
         {
-            CancelRun();
+            CancelRun("Player entered death scene");
 
             return;
         }
@@ -121,6 +127,25 @@ public class GameTimeManager : MonoBehaviour
             loadedSceneName == winSceneName)
         {
             StopTimer();
+
+            return;
+        }
+
+
+        // -----------------------------------------------------
+        // MAIN MENU / LOBBY
+        // Player left the level early without dying or winning.
+        // Treat it the same as a cancelled run so the time doesn't stay
+        // running or get mistaken for a completed/best time.
+        // -----------------------------------------------------
+
+        if (!string.IsNullOrEmpty(mainMenuSceneName) &&
+            loadedSceneName == mainMenuSceneName)
+        {
+            if (timerRunning)
+            {
+                CancelRun("Player returned to main menu / lobby");
+            }
 
             return;
         }
@@ -165,10 +190,13 @@ public class GameTimeManager : MonoBehaviour
 
     // =========================================================
     // CANCEL RUN
-    // PLAYER ENTERED DEATH SCENE
+    // Used both for "player died" and "player quit to main menu".
+    // The reason is only used for the log message so it's clear which
+    // case triggered it, but the effect (stop + reset, no score saved)
+    // is identical either way.
     // =========================================================
 
-    public void CancelRun()
+    public void CancelRun(string reason = "Player entered death scene")
     {
         if (!timerRunning)
             return;
@@ -177,7 +205,7 @@ public class GameTimeManager : MonoBehaviour
 
         Debug.Log("================================");
         Debug.Log("RUN CANCELLED");
-        Debug.Log("PLAYER ENTERED DEATH SCENE");
+        Debug.Log(reason);
         Debug.Log("TIME WAS NOT SAVED");
         Debug.Log("================================");
 
@@ -366,14 +394,19 @@ public class GameTimeManager : MonoBehaviour
 
     public void DeleteBestTime()
     {
-        PlayerPrefs.DeleteKey(
-            BEST_TIME_KEY
-        );
-
+        PlayerPrefs.DeleteKey(BEST_TIME_KEY);
         PlayerPrefs.Save();
 
         bestTime = -1f;
 
         Debug.Log("Best Time Deleted.");
+
+        // Update all GameTimeUI instances
+        GameTimeUI[] allTimeUI = FindObjectsOfType<GameTimeUI>();
+
+        foreach (GameTimeUI ui in allTimeUI)
+        {
+            ui.UpdateTimeDisplay();
+        }
     }
 }
