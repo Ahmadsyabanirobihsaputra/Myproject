@@ -78,4 +78,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene/escape the collapse/Main game/main level/gameplay main
       1.unity
     guid: 31c1db1d1866e1241883ded8991a4c69
+  - enabled: 1
+    path: Assets/Scenes/Scene/escape the collapse/Main game/main level/gameplay main
+      2.unity
+    guid: dd20a3fb839a73549ae269319cf9f59c
+  - enabled: 1
+    path: Assets/Scenes/Scene/escape the collapse/Main game/main level/gameplay main
+      3.unity
+    guid: fceed8c7349f3f14f9fe9ab48063a338
   m_configObjects: {}

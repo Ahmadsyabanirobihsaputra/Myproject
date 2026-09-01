@@ -3185,9 +3185,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleScenes:
   - sceneName: gameplay main 1
-    chanceWeight: 50
+    chanceWeight: 33
   - sceneName: gameplay main 2
-    chanceWeight: 50
+    chanceWeight: 33
+  - sceneName: gameplay main 3
+    chanceWeight: 33
 --- !u!114 &1421656440
 MonoBehaviour:
   m_ObjectHideFlags: 0
