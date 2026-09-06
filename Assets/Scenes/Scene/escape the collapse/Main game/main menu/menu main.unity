@@ -217,7 +217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &87689253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,8 +236,11 @@ MonoBehaviour:
   - triggerPhrase: play
     targetButton: {fileID: 1421656436}
   feedbackText: {fileID: 1014642843}
+  isListening: 0
+  isPushToTalkActive: 0
   showDebug: 1
   recognitionMode: 2
+  pttMode: 0
   pushToTalkKey: 118
   showPushToTalkStatus: 1
 --- !u!4 &87689254
@@ -3306,13 +3309,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1459042538}
   - component: {fileID: 1459042537}
+  - component: {fileID: 1459042539}
   m_Layer: 0
   m_Name: testing (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1459042537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3346,6 +3350,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1459042539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459042536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d457233d50ec564291730e51d9d6c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceCommands:
+  - triggerPhrase: play
+    targetButton: {fileID: 1421656436}
+  - triggerPhrase: quit
+    targetButton: {fileID: 1138272453}
+  feedbackText: {fileID: 1014642843}
 --- !u!1 &1465356533
 GameObject:
   m_ObjectHideFlags: 0

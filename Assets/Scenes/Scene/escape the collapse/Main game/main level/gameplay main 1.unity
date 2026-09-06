@@ -715,6 +715,7 @@ GameObject:
   m_Component:
   - component: {fileID: 87689254}
   - component: {fileID: 87689253}
+  - component: {fileID: 87689255}
   m_Layer: 0
   m_Name: Voice command
   m_TagString: Untagged
@@ -729,7 +730,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87689252}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7413d7f05a997c4887a6f52d87bc40a, type: 3}
   m_Name: 
@@ -752,8 +753,11 @@ MonoBehaviour:
   - triggerPhrase: touch
     targetButton: {fileID: 1976904936}
   feedbackText: {fileID: 1014642843}
+  isListening: 0
+  isPushToTalkActive: 0
   showDebug: 1
   recognitionMode: 2
+  pttMode: 0
   pushToTalkKey: 118
   showPushToTalkStatus: 1
 --- !u!4 &87689254
@@ -771,6 +775,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &87689255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87689252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d457233d50ec564291730e51d9d6c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceCommands:
+  - triggerPhrase: quit
+    targetButton: {fileID: 1138272453}
+  - triggerPhrase: respond
+    targetButton: {fileID: 1731385039}
+  - triggerPhrase: pick up
+    targetButton: {fileID: 1409924873}
+  - triggerPhrase: face
+    targetButton: {fileID: 1955728449}
+  - triggerPhrase: movie
+    targetButton: {fileID: 1350327841}
+  - triggerPhrase: stop
+    targetButton: {fileID: 67801010}
+  - triggerPhrase: push
+    targetButton: {fileID: 1855752587}
+  - triggerPhrase: touch
+    targetButton: {fileID: 1976904936}
+  feedbackText: {fileID: 1014642843}
 --- !u!1 &90881503
 GameObject:
   m_ObjectHideFlags: 0
