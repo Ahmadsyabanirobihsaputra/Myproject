@@ -1194,8 +1194,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2278641bf87b3f448815b65d059a7ba0, type: 3}
-  m_Color: {r: 0.7924528, g: 0.7662869, b: 0.7662869, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 5b1a3c11afea3824c9f5ad761d250625, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1214,8 +1214,8 @@ Transform:
   m_GameObject: {fileID: 1292407506}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4168, y: 0.21, z: 8.27}
-  m_LocalScale: {x: 2.8818808, y: 1.748155, z: 1}
+  m_LocalPosition: {x: 0, y: 0.1, z: 8.27}
+  m_LocalScale: {x: 2.213054, y: 2.0739763, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1622,8 +1622,13 @@ MonoBehaviour:
   - triggerPhrase: next
     targetButton: {fileID: 1421656436}
   feedbackText: {fileID: 1169062911}
+  isListening: 0
+  isPushToTalkActive: 0
   showDebug: 1
   recognitionMode: 2
+  pttMode: 0
+  pushToTalkKey: 118
+  showPushToTalkStatus: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
