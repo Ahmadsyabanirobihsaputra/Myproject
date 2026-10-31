@@ -6,6 +6,37 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Scene/escape the collapse/Main game/main menu/Intro 1.unity
+    guid: d0b836e86ea4257459c31decefab4241
+  - enabled: 1
+    path: Assets/Scenes/Scene/escape the collapse/Main game/main menu/Intro 2.unity
+    guid: c27b3e62ca3789543942453c7924a437
+  - enabled: 1
+    path: Assets/Scenes/Scene/escape the collapse/Main game/main menu/Intro 3.unity
+    guid: 654bd5661edd6404e8e6ac6693a845c2
+  - enabled: 1
+    path: Assets/Scenes/Scene/escape the collapse/Main game/main menu/Intro 4.unity
+    guid: 93c2fde960b1a4341b05c9a51ac4a544
+  - enabled: 1
+    path: Assets/Scenes/Scene/escape the collapse/Main game/main menu/Menu utama
+      game.unity
+    guid: bd4ad83f09b05c84e83a8d105765d9a5
+  - enabled: 1
+    path: Assets/Scenes/Scene/escape the collapse/Main game/main level/Gameplaymain1.unity
+    guid: 31c1db1d1866e1241883ded8991a4c69
+  - enabled: 1
+    path: Assets/Scenes/Scene/escape the collapse/Main game/main level/Gameplaymain2.unity
+    guid: dd20a3fb839a73549ae269319cf9f59c
+  - enabled: 1
+    path: Assets/Scenes/Scene/escape the collapse/Main game/main level/Gameplaymain3.unity
+    guid: fceed8c7349f3f14f9fe9ab48063a338
+  - enabled: 1
+    path: Assets/Scenes/Scene/escape the collapse/Main game/main level/Scene dead.unity
+    guid: 8a03cb8c0e2fc2b4783cfe3c88a810d6
+  - enabled: 1
+    path: Assets/Scenes/Scene/escape the collapse/Main game/main level/Scene win.unity
+    guid: 081d8427740d9c94695a51d5d5a77c08
+  - enabled: 1
     path: Assets/Scenes/Scene/preset menu.unity
     guid: 5b39f74c6b8316242b8718728a1a75e5
   - enabled: 1
@@ -60,9 +91,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene/escape the collapse/pembuka4.unity
     guid: f36e901c9fa070746ad9fef0678f947b
   - enabled: 1
-    path: Assets/Scenes/Scene/escape the collapse/Main game/main menu/menu main.unity
-    guid: bd4ad83f09b05c84e83a8d105765d9a5
-  - enabled: 1
     path: Assets/Scenes/Scene/escape the collapse/menu.unity
     guid: bfaa9f17aee8d3b48b29361cb9512910
   - enabled: 1
@@ -74,16 +102,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene/escape the collapse/win screen.unity
     guid: 8015e2de44988a741a79dd132faa524f
-  - enabled: 1
-    path: Assets/Scenes/Scene/escape the collapse/Main game/main level/gameplay main
-      1.unity
-    guid: 31c1db1d1866e1241883ded8991a4c69
-  - enabled: 1
-    path: Assets/Scenes/Scene/escape the collapse/Main game/main level/gameplay main
-      2.unity
-    guid: dd20a3fb839a73549ae269319cf9f59c
-  - enabled: 1
-    path: Assets/Scenes/Scene/escape the collapse/Main game/main level/gameplay main
-      3.unity
-    guid: fceed8c7349f3f14f9fe9ab48063a338
   m_configObjects: {}

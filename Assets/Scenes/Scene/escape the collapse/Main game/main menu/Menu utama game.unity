@@ -1021,9 +1021,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28f0575cada4354d8f375a1a2c99231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathSceneName: deadscreen
-  winSceneName: win screen
-  mainMenuSceneName: menu main
+  deathSceneName: Scene dead
+  winSceneName: Scene win
+  mainMenuSceneName: Menu utama game
 --- !u!4 &378300207
 Transform:
   m_ObjectHideFlags: 0
@@ -3260,11 +3260,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleScenes:
-  - sceneName: gameplay main 1
+  - sceneName: Gameplaymain1
     chanceWeight: 33
-  - sceneName: gameplay main 2
+  - sceneName: Gameplaymain2
     chanceWeight: 33
-  - sceneName: gameplay main 3
+  - sceneName: Gameplaymain3
     chanceWeight: 33
 --- !u!114 &1421656440
 MonoBehaviour:

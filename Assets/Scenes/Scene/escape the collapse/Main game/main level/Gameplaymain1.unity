@@ -1482,7 +1482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObject: {fileID: 104534490}
   toggleObject: 0
-  sceneToLoad: menu main
+  sceneToLoad: Menu utama game
   destroyAfterUse: 0
 --- !u!1 &129560175 stripped
 GameObject:
@@ -4822,7 +4822,7 @@ MonoBehaviour:
   - 300
   - 200
   - 260
-  nextSceneName: deadscreen
+  nextSceneName: Scene dead
   timerText: {fileID: 850980494}
   warningSound: {fileID: 0}
   warningTime: 10
@@ -14215,7 +14215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd535e29045e7fa4196192e4e3597f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: menu main
+  sceneToLoad: Menu utama game
 --- !u!1 &1144983403
 GameObject:
   m_ObjectHideFlags: 0
@@ -18329,7 +18329,7 @@ MonoBehaviour:
   chaseSpeed: 1
   chaseRadius: 100
   returnSpeed: 3
-  nextSceneName: deadscreen
+  nextSceneName: Scene dead
   sharkGrowlClip: {fileID: 0}
   soundTriggerDistance: 5
   soundCooldown: 3
@@ -25406,7 +25406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1351517402}
-  nextSceneName: win screen
+  nextSceneName: Scene win
 --- !u!1 &1940981833
 GameObject:
   m_ObjectHideFlags: 0
